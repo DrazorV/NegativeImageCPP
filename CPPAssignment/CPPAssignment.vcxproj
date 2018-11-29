@@ -115,6 +115,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\Image.cpp" />
+    <ClCompile Include="..\neg.cpp" />
+    <ClCompile Include="..\ppm\ppm.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Color.h" />
+    <ClInclude Include="..\Image.h" />
+    <ClInclude Include="..\ppm\ppm.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image01.ppm" />
+    <None Include="Image02.ppm" />
+    <None Include="Image03.ppm" />
+    <None Include="Image04.ppm" />
+    <None Include="Image05.ppm" />
+    <None Include="Image06.ppm" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
