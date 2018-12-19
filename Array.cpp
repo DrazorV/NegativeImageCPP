@@ -66,31 +66,22 @@ Array<T>::Array(const Array &src) {
 
 template<typename T>
 Array<T>::~Array(){
-    if (!buffer.empty()) {
-        delete(buffer);
-    }
+    if (!buffer.empty()) delete(buffer);
 }
 
 template<typename T>
 Array<T> &Array<T>::operator=(const Array &right) {
-    if (&right == this)
-    {
-        return *this;
-    }
-    if (!buffer.empty())
-        buffer.erase(buffer.begin(), buffer.end());
+    if (&right == this) return *this;
+    if (!buffer.empty()) buffer.erase(buffer.begin(), buffer.end());
     width = right.width;
     height = right.height;
-    for (unsigned int i = 0; i< width*height; i++)
-        buffer.push_back(right.buffer[i]);
+    for (unsigned int i = 0; i< width*height; i++) buffer.push_back(right.buffer[i]);
     return *this;
 }
 
 template<typename T>
 T &Array<T>::operator()(unsigned int i, unsigned int j) {
-    if (j < getWidth() && i < getHeight())
-        return (unsigned int)buffer[j * getHeight() + i];
-    else
-        return -1;
+    if (j < getWidth() && i < getHeight()) return (unsigned int)buffer[j * getHeight() + i];
+    else return -1;
 }
 
