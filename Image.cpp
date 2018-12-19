@@ -60,9 +60,10 @@ bool Image::load(const string & filename, const string & format){
         float * ImgPointer = ReadPPM(filename.c_str(),(int*) w,(int*) h);
         if(ImgPointer == nullptr) return false;
 
-        for(unsigned int i=0; i < *w * *h * 3; i++) {
-            buffer[i] = Vec3<float>(ImgPointer[i],ImgPointer[i+1],ImgPointer[i+2]);
-        }
+        if(buffer.empty()) buffer.resize(*w * *h);
+
+        for(unsigned int i = 0; i < *w * *h * 3; i+=3) for(unsigned int j = 0;j < *w * *h;j++) buffer[j] = Vec3<float>(ImgPointer[i],ImgPointer[i+1],ImgPointer[i+2]);
+
         return true;
     } else return false;
 }
@@ -79,19 +80,20 @@ bool Image::load(const string & filename, const string & format){
 *
 * \return true if the save operation completes successfully, false otherwise.
 */
-//bool Image::save(const string & filename,const string & format){
-//
-//    if(tolower(filename.find(format)) != *".ppm"){
-//        Color * data = getRawDataPtr();
-//        auto * transition = new float[width * height * 3];
-//        for(unsigned int i = 0;i < width * height * 3; i++){
-//            transition[i] = data[i][0];
-//            transition[i+1] = data[i][1];
-//            transition[i+2] = data[i][2];
-//        }
-//        return WritePPM(transition,width,height,filename.c_str());
-//    } else{
-//        return false;
-//    }
-//}
+bool Image::save(const string & filename,const string & format){
+    if(tolower(filename.find(format)) != *".ppm") {
+
+        //apodsmefsh mnhmhs na kanoume!!!
+        auto *transition = new float[width * height * 3];
+        for (unsigned int i = 0; i < width * height * 3; i+=3)for (unsigned int j = 0 ; j < width * height; j++) {
+            transition[i] = buffer[j][0];
+            transition[i + 1] = buffer[j][1];
+            transition[i + 2] = buffer[j][2];
+        }
+        WritePPM(transition,width,height,filename.c_str());
+        return !(width == 0 || height == 0 || buffer.empty());
+    } else{
+        return false;
+    }
+}
 

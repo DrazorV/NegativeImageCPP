@@ -17,7 +17,7 @@ int main(int agrc, char *argv[]) {
     const char * filename = new char[50];
     unsigned int *w,  *h , width = 0 , height = 0;
     w = &width, h = &height;
-    auto * colors = new Color[*w * *h];
+    auto * colors = new vector<float>[*w * *h];
 
     Image image(*w,*h);
 	//checking if there is an argument with the name of the file

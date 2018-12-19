@@ -37,13 +37,6 @@ namespace imaging
 	 */
     class Image : public Array<Vec3<float>>
 	{
-	public:
-		                                             
-	protected:
-		Color * buffer;                              //! Holds the image data.
-
-		unsigned int width, 						 //! The width of the image (in pixels)
-					 height;		                 //! The height of the image (in pixels)
 
 	public:
 		// constructors and destructor
