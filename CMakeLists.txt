@@ -12,4 +12,5 @@ add_executable(CPPAssignment
         Color.h
         Image.cpp
         Image.h
-        neg.cpp)
+        neg.cpp
+        Vec3.h)
