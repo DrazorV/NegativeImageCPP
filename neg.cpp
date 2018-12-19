@@ -20,7 +20,7 @@ int main(int agrc, char *argv[]) {
     auto * colors = new Color[*w * *h];
 
     Image image(*w,*h);
-	//checking if there is an agrument with the name of the file
+	//checking if there is an argument with the name of the file
     if(agrc == 1) {
         cout << "Please insert the full path to the file you want to load:" << endl;
         getline(cin,input);
