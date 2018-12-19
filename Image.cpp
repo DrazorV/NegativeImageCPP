@@ -12,11 +12,12 @@
 using namespace imaging;
 using namespace std;
 
+//getter
 Color * Image::getRawDataPtr(){
     return buffer;
 }
 
-
+//getter
 Color Image::getPixel(unsigned int x, unsigned int y)const{
     if (x < 0 || y < 0 || x > width || y > height) {
         return {0, 0, 0};
@@ -25,10 +26,13 @@ Color Image::getPixel(unsigned int x, unsigned int y)const{
         return buffer[width * x + y];
     }
 }
+
+//setter
 void Image::setPixel(unsigned int x, unsigned int y, Color & value){
         buffer[width * x + y] = value;
 }
 
+//setter
 void Image::setData(const Color * & data_ptr){
     if (width == 0 || height == 0 || buffer == nullptr ) {
         return;
@@ -37,29 +41,38 @@ void Image::setData(const Color * & data_ptr){
 
 }
 
+//default constructor
 Image::Image()
     :width(0), height(0), buffer(nullptr){}
 
+//constructor with width and height
 Image::Image(unsigned int width, unsigned int height)
         :buffer(nullptr){
         this->width = width;
         this->height = height;
     }
 
+//constructor with all the values
 Image::Image(unsigned int width, unsigned int height, const Color * data_ptr){
         this->width = width;
         this->height = height;
-        *buffer = *data_ptr;
+        for (unsigned int i = 0; i < width*height; i++)
+        {
+            buffer[i] = data_ptr[i];
+        }
     }
 
+//constructor with an Image
 Image::Image(const Image & src){
         width = src.getWidth();
         height = src.getHeight();
         buffer = src.buffer;
     }
 
+//destructor
 Image::~Image() = default;
 
+//Copy operator
 Image & Image::operator = (const Image &right) {
     if(&right == this) return *this;
     width  = right.width;
@@ -68,6 +81,7 @@ Image & Image::operator = (const Image &right) {
     return *this;
 }
 
+//Method that returns true if file was loaded successfuly
 bool Image::load(const string & filename, const string & format){
     unsigned int *w = &width;
     unsigned int *h = &height;
@@ -82,6 +96,7 @@ bool Image::load(const string & filename, const string & format){
     } else return false;
 }
 
+//Method that returns true if file was saved successfuly
 bool Image::save(const string & filename,const string & format){
     if(tolower(filename.find(format)) != *".ppm"){
         Color * data = getRawDataPtr();

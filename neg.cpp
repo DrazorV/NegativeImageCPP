@@ -20,8 +20,9 @@ int main(int agrc, char *argv[]) {
     auto * colors = new Color[*w * *h];
 
     Image image(*w,*h);
+	//checking if there is an agrument with the name of the file
     if(agrc == 1) {
-        cout << "Please insert the path to the file you want to load:" << endl;
+        cout << "Please insert the full path to the file you want to load:" << endl;
         getline(cin,input);
         filename = input.c_str();
     }else if(agrc > 1) {
@@ -33,12 +34,14 @@ int main(int agrc, char *argv[]) {
     Image img = image;
     // value for white image
     Color white(1, 1, 1);
+	//check if image is loaded
     if (isLoaded) {
         colors = image.getRawDataPtr();
         cout << "File has been loaded successfully!" << endl;
     } else {
         cout << "File could not be loaded properly!" << endl;
     }
+	//pixel = white - pixel makes the negative
     for (unsigned int i = 0; i < *w; i++) {
         for (unsigned int j = 0; i < *h; i++) {
             Color pixel = image.getPixel(i, j);
@@ -46,16 +49,17 @@ int main(int agrc, char *argv[]) {
             img.setPixel(i, j, pixel);
         }
     }
-
+	//checks if save was successfull
     bool saver = img.save(rename(filename), ".ppm");
     if (saver) {
         cout << ("The picture has been saved successfully. ");
     }
     cout << "The width is: " << image.getWidth() << " and the height is: " << image.getHeight() << endl;
+	system("pause");
 }
 
 
-
+//gets the type of the file
 string extension(const char * filename){
     string name = filename;
     string extension;
@@ -68,7 +72,7 @@ string extension(const char * filename){
     return extension;
 }
 
-
+//creates the name for the nagative image
 string rename(const char * filename){
     string name = filename;
     string rename;

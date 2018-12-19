@@ -32,7 +32,7 @@
     <ClInclude Include="..\Image.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\ppm\ppm.h">
+    <ClInclude Include="..\..\..\..\Desktop\1stASSG_3150028_3150026\Assignment\ppm\ppm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

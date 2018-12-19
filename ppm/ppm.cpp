@@ -11,7 +11,7 @@ static const int MAX_PIXEL_VALUE = 255;
 
 namespace imaging {
 
-
+	//Reads the file and checks if the header of ppm file is correct.
     float * ReadPPM(const char *filename, int * w, int * h) {
         string format;
         int depth;
@@ -46,13 +46,14 @@ namespace imaging {
         imgPointer = pixels;
         for (int i = 0; i < *w * *h * 3; i++) {
             buffer = float(file.get());
+			//devide by 255
             pixels[i] = buffer / MAX_PIXEL_VALUE;
         }
         file.close();
         return imgPointer;
     }
 
-
+	//writes the file and its header
     bool WritePPM(const float *data, int w, int h, const char *filename) {
         if (data == nullptr) return false;
         ofstream file(filename, ios::out | ios::binary);
@@ -63,6 +64,7 @@ namespace imaging {
         } else {
             file << "P6" << " " << w << " " << h << " " << MAX_PIXEL_VALUE << " ";
             for (int i = 0; i < w * h * 3; i++) {
+				// (1 - pixel value) * 255
                 buffer = static_cast<unsigned char>((1 - data[i]) * MAX_PIXEL_VALUE);
                 file << buffer;
             }
