@@ -4,26 +4,17 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <string.h>
 #include "ppm/ppm.h"
 #include "Image.h"
 #include "Color.h"
 #include "Vec3.h"
 #include <vector>
+#include "Array.h"
 
 using namespace imaging;
 using namespace std;
+using namespace math;
 
-
-/*! Constructor with data initialization.
-*
-* \param width is the desired width of the new image.
-* \param height is the desired height of the new image.
-* \param data_ptr is the source of the data to copy to the internal image buffer.
-*
-* \see setData
-*/
-Image::Image(unsigned int width, unsigned int height, const vector<Vec3<float>> data_ptr) :Array<Vec3<float>>(width,height, data_ptr) {}
 
 /*! Default constructor.
 *
@@ -37,11 +28,6 @@ Image::Image():Array<Vec3<float>>(){}
 * \param height is the desired height of the new image.
 */
 Image::Image(unsigned int width, unsigned int height):Array<Vec3<float>>(width,height){}
-
-//constructor with all the values
-
-
-//constructor with an Image
 
 
 /*! The Image destructor.
@@ -73,9 +59,9 @@ bool Image::load(const string & filename, const string & format){
     if(tolower(filename.find(format)) != *".ppm"){
         float * ImgPointer = ReadPPM(filename.c_str(),(int*) w,(int*) h);
         if(ImgPointer == nullptr) return false;
-        buffer = new Color[*w * *h * 3];
+
         for(unsigned int i=0; i < *w * *h * 3; i++) {
-            buffer[i] = Color(ImgPointer[i],ImgPointer[i+1],ImgPointer[i+2]);
+            buffer[i] = Vec3<float>(ImgPointer[i],ImgPointer[i+1],ImgPointer[i+2]);
         }
         return true;
     } else return false;
@@ -93,18 +79,19 @@ bool Image::load(const string & filename, const string & format){
 *
 * \return true if the save operation completes successfully, false otherwise.
 */
-bool Image::save(const string & filename,const string & format){
-    if(tolower(filename.find(format)) != *".ppm"){
-        Color * data = getRawDataPtr();
-        auto * transition = new float[width * height * 3];
-        for(unsigned int i = 0;i < width * height * 3; i++){
-            transition[i] = data[i][0];
-            transition[i+1] = data[i][1];
-            transition[i+2] = data[i][2];
-        }
-        return WritePPM(transition,width,height,filename.c_str());
-    } else{
-        return false;
-    }
-}
+//bool Image::save(const string & filename,const string & format){
+//
+//    if(tolower(filename.find(format)) != *".ppm"){
+//        Color * data = getRawDataPtr();
+//        auto * transition = new float[width * height * 3];
+//        for(unsigned int i = 0;i < width * height * 3; i++){
+//            transition[i] = data[i][0];
+//            transition[i+1] = data[i][1];
+//            transition[i+2] = data[i][2];
+//        }
+//        return WritePPM(transition,width,height,filename.c_str());
+//    } else{
+//        return false;
+//    }
+//}
 

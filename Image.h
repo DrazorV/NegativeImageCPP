@@ -46,40 +46,6 @@ namespace imaging
 					 height;		                 //! The height of the image (in pixels)
 
 	public:
-		// metric accessors
-		/*! Obtains the color of the image at location (x,y).
-		 *
-		 *  The method should do any necessary bounds checking. 
-		 *
-		 *  \param x is the (zero-based) horizontal index of the pixel to get. 
-		 *  \param y is the (zero-based) vertical index of the pixel to get. 
-		 *
-		 *  \return The color of the (x,y) pixel as a Color object. Returns a black (0,0,0) color in case of an out-of-bounds x,y pair.
-		 */
-		Color getPixel(unsigned int x, unsigned int y) const;
-
-		// data mutators
-		
-		/*! Sets the RGB values for an (x,y) pixel.
-		 * 
-		 *  The method should perform any necessary bounds checking.
-		 *  
-		 *  \param x is the (zero-based) horizontal index of the pixel to set. 
-		 *  \param y is the (zero-based) vertical index of the pixel to set. 
-		 *  \param value is the new color for the (x,y) pixel.
-		 */
-		void setPixel(unsigned int x, unsigned int y, Color & value); 
-		                                                         
-		/*! Copies the image data from an external raw buffer to the internal image buffer. 
-		 *
-		 *  The member function ASSUMES that the input buffer is of a size compatible with the internal storage of the 
-		 *  Image object and that the data buffer has been already allocated. If the image buffer is not allocated or the 
-		 *  width or height of the image are 0, the method should exit immediately.
-		 *
-		 *  \param data_ptr is the reference to the preallocated buffer from where to copy the data to the Image object.
-		 */
-		void setData(const Color * & data_ptr);            
-
 		// constructors and destructor
 
 		/*! Default constructor.
@@ -94,32 +60,17 @@ namespace imaging
 		 * \param height is the desired height of the new image.
 		 */ 
 		Image(unsigned int width, unsigned int height);
-		
-		/*! Constructor with data initialization.
-		 * 
-		 * \param width is the desired width of the new image.
-		 * \param height is the desired height of the new image.
-		 * \param data_ptr is the source of the data to copy to the internal image buffer.
-		 * 
-		 * \see setData
-		 */ 
-		Image(unsigned int width, unsigned int height, const Color * data_ptr);
+
 		
 		/*! Copy constructor.
 		 *
 		 * \param src is the source image to replicate in this object.
 		 */
 		Image(const Image &src);
-		
+
 		/*! The Image destructor.
 		 */
 		~Image();
-
-		/*! Copy assignment operator.
-		 *
-		 * \param right is the source image.
-		 */
-		Image & operator = (const Image & right);
 
 		/*!
 		 * Loads the image data from the specified file, if the extension of the filename matches the format string.
