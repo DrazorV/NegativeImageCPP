@@ -11,9 +11,12 @@
 
 #include "Color.h"
 #include <string>
+#include "Vec3.h"
+#include "Array.h"
 
 /*! The imaging namespace contains every class or function associated with the image storage, compression and manipulation. 
- */ 
+ */
+using namespace math;
 namespace imaging
 {
 
@@ -31,8 +34,8 @@ namespace imaging
 	 *
 	 * All values stored in the Color data type components are assumed to be floating point values and for typical (normalized)
 	 * intensity ranges, each color component is within the range [0.0, 1.0].
-	 */ 
-	class Image
+	 */
+    class Image : public Array<Vec3<float>>
 	{
 	public:
 		                                             
@@ -44,24 +47,6 @@ namespace imaging
 
 	public:
 		// metric accessors
-		
-		/*! Returns the width of the image
-		 */
-		const unsigned int getWidth() const {return width;}      
-		
-		/*! Returns the height of the image
-		 */
-		const unsigned int getHeight() const {return height;}   
-
-		// data accessors
-		
-		/*! Obtains a pointer to the internal data.
-		 *
-		 *  This is NOT a copy of the internal image data, but rather a pointer 
-		 *  to the internally allocated space, so DO NOT attempt to delete the pointer. 
-		 */
-		Color * getRawDataPtr();
-
 		/*! Obtains the color of the image at location (x,y).
 		 *
 		 *  The method should do any necessary bounds checking. 

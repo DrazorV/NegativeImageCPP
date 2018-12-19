@@ -49,7 +49,7 @@ namespace math
 
 	public:
 		// metric accessors
-		
+
 		/*! Returns the width of the array
 		 */
 		const unsigned int getWidth() const {return width;}      
@@ -141,6 +141,10 @@ namespace math
 		 */
         Array & operator = (const Array & right);
 
+        /*! New operator.
+		 *
+		 * \param Returns reference to element of type T in raw j and column i.
+		 */
         T & operator () (unsigned int i , unsigned int j);
 
 	};
