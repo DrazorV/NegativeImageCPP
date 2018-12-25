@@ -6,9 +6,7 @@
 using namespace math;
 
 template<typename T>
-vector<T> *Array<T>::getRawDataPtr() {
-    return buffer;
-}
+vector<T> *Array<T>::getRawDataPtr() {return buffer;}
 
 template<typename T>
 T Array<T>::getValue(unsigned int x, unsigned int y) const {
@@ -25,7 +23,6 @@ template<typename T>
 void Array<T>::setValue(unsigned int x, unsigned int y, T &value) {
     T color = buffer[x + width*y];
     if (x > getWidth() || y > getHeight()) return;
-
     unsigned int first = (x + y * width);
     color[first] = value.r;
     color[first + 1] = value.g;
@@ -36,7 +33,6 @@ void Array<T>::setValue(unsigned int x, unsigned int y, T &value) {
 template<typename T>
 void Array<T>::setData(const vector<T> *&data_ptr) {
     if (width == 0 || height == 0 || buffer.empty()) return;
-
     for (unsigned int i = 0; i<width*height; i++) buffer.push_back(data_ptr[i]);
 }
 
@@ -65,9 +61,7 @@ Array<T>::Array(const Array &src) {
 }
 
 template<typename T>
-Array<T>::~Array(){
-    if (!buffer.empty()) delete(buffer);
-}
+Array<T>::~Array(){if (!buffer.empty()) delete(buffer);}
 
 template<typename T>
 Array<T> &Array<T>::operator=(const Array &right) {
