@@ -38,8 +38,6 @@ namespace math
 	 */
     template<typename T>
 	class Array{
-
-	public:
 		                                             
 	protected:
 		vector<T> buffer;                              //! Holds the Array data.

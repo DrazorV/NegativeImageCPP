@@ -14,4 +14,4 @@ add_executable(CPPAssignment
         Image.h
         neg.cpp
         Vec3.h
-        Array.h Array.cpp)
+        Array.h Array.cpp Filter.h)

@@ -37,7 +37,6 @@ namespace imaging
 	 */
     class Image : public Array<Vec3<float>>
 	{
-
 	public:
 		// constructors and destructor
 
@@ -45,26 +44,21 @@ namespace imaging
 		 * 
 		 * By default, the dimensions of the image should be zero and the buffer must be set to nullptr.
 		 */
-		Image();											     	
-		
+		Image();
 		/*! Constructor with width and height specification.
 		 * 
 		 * \param width is the desired width of the new image.
 		 * \param height is the desired height of the new image.
 		 */ 
 		Image(unsigned int width, unsigned int height);
-
-		
 		/*! Copy constructor.
 		 *
 		 * \param src is the source image to replicate in this object.
 		 */
 		Image(const Image &src);
-
 		/*! The Image destructor.
 		 */
 		~Image();
-
 		/*!
 		 * Loads the image data from the specified file, if the extension of the filename matches the format string.
 		 *
@@ -79,7 +73,6 @@ namespace imaging
 		 * \return true if the loading completes successfully, false otherwise.
 		 */
 		bool load(const std::string & filename, const std::string & format);
-
 		/*!
 		* Stores the image data to the specified file, if the extension of the filename matches the format string.
 		*
@@ -93,7 +86,6 @@ namespace imaging
 		* \return true if the save operation completes successfully, false otherwise.
 		*/
 		bool save(const std::string & filename, const std::string & format);
-
 	};
 
 } //namespace imaging

@@ -266,7 +266,7 @@ namespace math
 		*
 		* \param val is the value that is replicated to all elements of the vector.
 		*/
-		Vec3<S>(S val) : x(val), y(val), z(val) {}
+        Vec3<S>(S val) : x(val), y(val), z(val) {}
 
 		/*! Default constructor.
 		 * 

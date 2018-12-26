@@ -29,7 +29,6 @@ Image::Image():Array<Vec3<float>>(){}
 */
 Image::Image(unsigned int width, unsigned int height):Array<Vec3<float>>(width,height){}
 
-
 /*! The Image destructor.
 */
 Image::~Image() = default;
@@ -38,6 +37,7 @@ Image::~Image() = default;
 *
 * \param src is the source image to replicate in this object.
 */
+//afto ti kanei?
 Image::Image(const Image &src):Array<Vec3<float>>(src){}
 
 /*!
@@ -59,11 +59,8 @@ bool Image::load(const string & filename, const string & format){
     if(tolower(filename.find(format)) != *".ppm"){
         float * ImgPointer = ReadPPM(filename.c_str(),(int*) w,(int*) h);
         if(ImgPointer == nullptr) return false;
-
         if(buffer.empty()) buffer.resize(*w * *h);
-
         for(unsigned int i = 0; i < *w * *h * 3; i+=3) for(unsigned int j = 0;j < *w * *h;j++) buffer[j] = Vec3<float>(ImgPointer[i],ImgPointer[i+1],ImgPointer[i+2]);
-
         return true;
     } else return false;
 }
@@ -82,7 +79,6 @@ bool Image::load(const string & filename, const string & format){
 */
 bool Image::save(const string & filename,const string & format){
     if(tolower(filename.find(format)) != *".ppm") {
-
         //apodsmefsh mnhmhs na kanoume!!!
         auto *transition = new float[width * height * 3];
         for (unsigned int i = 0; i < width * height * 3; i+=3)for (unsigned int j = 0 ; j < width * height; j++) {
@@ -92,8 +88,6 @@ bool Image::save(const string & filename,const string & format){
         }
         WritePPM(transition,width,height,filename.c_str());
         return !(width == 0 || height == 0 || buffer.empty());
-    } else{
-        return false;
-    }
+    } else return false;
 }
 
