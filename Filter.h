@@ -1,8 +1,6 @@
 //
 // Created by DrazorV on 26-Dec-18.
 //
-#ifndef _FILTER_H
-#define _FILTER_H
 
 
 #include "Image.h"
@@ -33,7 +31,7 @@ public:
 
 class FilterGamma: public Filter{
 private:
-    double gamma{};
+    double gamma;
 public:
     //default constructor
     FilterGamma():Filter(){gamma = 0;};
@@ -100,9 +98,3 @@ public:
     }
 
 };
-#endif _FILTER_H
-
-//function<bool(string,string)> comp = [] (string& s1, string& s2) {return s1.length() > s2.length(); };
-//function<bool(string&,string&)> comp = [] (string& s1, string& s2) {return s1.length() > s2.length(); };
-//function<bool(string,string)> comp = [] (string&& s1, string&& s2) {return s1.length() > s2.length(); };
-//function<bool(string,string)> comp = [] (const string& s1, const string& s2) {return s1.length() > s2.length(); };

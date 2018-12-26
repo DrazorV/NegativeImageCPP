@@ -35,6 +35,7 @@ namespace imaging
 	 * All values stored in the Color data type components are assumed to be floating point values and for typical (normalized)
 	 * intensity ranges, each color component is within the range [0.0, 1.0].
 	 */
+
     class Image : public Array<Vec3<float>>
 	{
 	public:
@@ -59,6 +60,8 @@ namespace imaging
 		/*! The Image destructor.
 		 */
 		~Image();
+
+        Image(unsigned int width, unsigned int height, vector<Vec3<float>>  data_ptr);
 		/*!
 		 * Loads the image data from the specified file, if the extension of the filename matches the format string.
 		 *

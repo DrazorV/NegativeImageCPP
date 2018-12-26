@@ -9,6 +9,7 @@
 #ifndef _Array
 #define _Array
 
+
 #include "Vec3.h"
 #include <string>
 #include <vector>
@@ -16,8 +17,9 @@
 
 /*! The imaging namespace contains every class or function associated with the image storage, compression and manipulation. 
  */ 
-using namespace imaging;
+
 using namespace std;
+using namespace imaging;
 namespace math
 {
 
@@ -36,14 +38,14 @@ namespace math
 	 * All values stored in the Color data type components are assumed to be floating point values and for typical (normalized)
 	 * intensity ranges, each color component is within the range [0.0, 1.0].
 	 */
-    template<typename T>
+	template<typename T>
 	class Array{
-		                                             
+	public:
+
 	protected:
 		vector<T> buffer;                              //! Holds the Array data.
 
-		unsigned int width, 						 //! The width of the array (in pixels)
-					 height;		                 //! The height of the array (in pixels)
+		unsigned int width,height;						 //! The width/height of the array (in pixels)
 
 	public:
 		// metric accessors

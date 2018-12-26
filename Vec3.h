@@ -23,7 +23,7 @@ namespace math
 	class Vec3
 	{
 	private:
-		static S zero;
+        static S zero;
 
 	public:
 		// data members
@@ -316,7 +316,7 @@ namespace math
 		{
 			return x != right.x || y != right.y || z != right.z;
 		}
-	};
+    };
 
 	/*! Scalar-vector multiplication.
 	*

@@ -12,6 +12,8 @@ add_executable(CPPAssignment
         Color.h
         Image.cpp
         Image.h
-        neg.cpp
         Vec3.h
-        Array.h Array.cpp Filter.h)
+        Array.h
+        Array.cpp
+        Filter.h
+        Filter.cpp)

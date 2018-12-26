@@ -12,7 +12,7 @@ using namespace imaging;
 string extension(const char * filename);
 string rename(const char * filename);
 
-int main(int agrc, char *argv[]) {
+int main(int argc, char *argv[]) {
     string input;
     const char * filename = new char[50];
     unsigned int *w,  *h , width = 0 , height = 0;
@@ -21,11 +21,11 @@ int main(int agrc, char *argv[]) {
 
     Image image(*w,*h);
 	//checking if there is an argument with the name of the file
-    if(agrc == 1) {
+    if(argc == 1) {
         cout << "Please insert the full path to the file you want to load:" << endl;
         getline(cin,input);
         filename = input.c_str();
-    }else if(agrc > 1) {
+    }else if(argc > 1) {
         input = argv[1];
         filename = input.c_str();
     }

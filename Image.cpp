@@ -6,13 +6,12 @@
 #include <string>
 #include "ppm/ppm.h"
 #include "Image.h"
-#include "Color.h"
 #include "Vec3.h"
 #include <vector>
 #include "Array.h"
 
-using namespace imaging;
 using namespace std;
+using namespace imaging;
 using namespace math;
 
 
@@ -32,6 +31,17 @@ Image::Image(unsigned int width, unsigned int height):Array<Vec3<float>>(width,h
 /*! The Image destructor.
 */
 Image::~Image() = default;
+
+/*! Constructor with data initialization.
+*
+* \param width is the desired width of the new image.
+* \param height is the desired height of the new image.
+* \param data_ptr is the source of the data to copy to the internal image buffer.
+*
+* \see setData
+*/
+Image::Image(unsigned int width, unsigned int height, const vector<Vec3<float>> data_ptr) {}
+
 
 /*! Copy constructor.
 *
@@ -90,4 +100,3 @@ bool Image::save(const string & filename,const string & format){
         return !(width == 0 || height == 0 || buffer.empty());
     } else return false;
 }
-
